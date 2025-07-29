@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yacht Booking</title>
+  <link rel="stylesheet" href="styl.css" />
+  
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("YOUR_PUBLIC_KEY"); // Vendos këtu public key nga EmailJS
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <a href="index.html"><img src="501276017_17970880391858068_4089696091384218595_n.jpg" alt=" Logo" /></a>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="fleet.html">Fleet</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a class="active" href="booking.html">Booking</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- BOOKING SECTION -->
+  <section class="booking">
+    <h2>Book Your Yacht</h2>
+    <form id="booking-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <select name="yacht" required>
+        <option value="" disabled selected>Select a Yacht</option>
+        <option value="Riva Diva">Riva Diva</option>
+        <option value="Arat Princess V65">Arat Princess V65</option>
+        <option value="Akul Cranchi Z35">Akul Cranchi Z35</option>
+      </select>
+      <input type="date" name="date" required />
+      <input type="number" name="people" placeholder="Number of Guests" min="1" required />
+      <textarea name="message" placeholder="Additional Notes (optional)"></textarea>
+      <button type="submit" class="btn">Send Reservation</button>
+      <p id="booking-status"></p>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Migrem Rental. All rights reserved.</p>
+  </footer>
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '061dcd05a548b3654962ab278aa89ff923d78f5b';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+  <script src="scrip.js"></script>
+</body>
+</html>
+

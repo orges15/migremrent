@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yacht Fleet</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f9ff;
+    color: #003366;
+  }
+  nav {
+    background-color: #004080;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav .logo {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+  }
+  nav ul li a {
+    color: white;
+    font-weight: 600;
+  }
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    background: white;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    border-radius: 2px;
+  }
+  @media (max-width: 600px) {
+    nav ul {
+      position: absolute;
+      top: 56px;
+      left: 0; right: 0;
+      background: #004080;
+      flex-direction: column;
+      display: none;
+    }
+    nav ul.show {
+      display: flex;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+  }
+  .container {
+    max-width: 1000px;
+    margin: 70px auto 60px;
+    padding: 0 15px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 25px;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+  }
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .card-content {
+    padding: 15px 20px;
+    flex-grow: 1;
+  }
+  .card-content h3 {
+    margin: 0 0 10px;
+    color: #004080;
+  }
+  .card-content p {
+    margin: 6px 0;
+    font-weight: 600;
+  }
+  .btn-book {
+    display: block;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0 0 12px 12px;
+    transition: background-color 0.3s ease;
+  }
+  .btn-book:hover {
+    background-color: #0056b3;
+  }
+  footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 18px 10px;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">MigremRental</div>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span><span></span><span></span>
+  </div>
+  <ul id="navMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html" aria-current="page">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1>Our Yacht Fleet</h1>
+  <div class="grid-container" id="fleetContainer"></div>
+</div>
+
+<footer>
+  &copy; 2025 MigremRental. All rights reserved.
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+  // Your yachts data (update with your real data and images)
+  const yachts = [
+    {
+      name: "Arat Princess V65",
+      image: "https://akulyachts.me/wp-content/uploads/2025/03/thumb-1.webp",
+      capacity: 15+2,
+      id: "Arat Princess V65"
+    },
+    {
+      name: "Akul Cranchi Z35",
+      image: "https://akulyachts.me/wp-content/uploads/2025/03/thmb-2.webp",
+      capacity: 8,
+      id: "Akul Cranchi Z35"
+    },
+    {
+      name: "Riva Diva",
+      image: "https://akulyachts.me/wp-content/uploads/2025/06/RIVA-DIVA-1.webp",
+      capacity: 15,
+      id: "Riva Diva"
+    }
+  ];
+
+  const container = document.getElementById('fleetContainer');
+
+  yachts.forEach(yacht => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    // link to booking.html with query params for yacht id and name
+    const bookLink = `booking.html?yacht=${encodeURIComponent(yacht.id)}&name=${encodeURIComponent(yacht.name)}`;
+    card.innerHTML = `
+      <img src="${yacht.image}" alt="${yacht.name}" />
+      <div class="card-content">
+        <h3>${yacht.name}</h3>
+        <p>Type: ${yacht.type}</p>
+        <p>Price: €${yacht.price} / day</p>
+        <p>Max Capacity: ${yacht.capacity} persons</p>
+      </div>
+      <a href="${bookLink}" class="btn-book" aria-label="Book ${yacht.name}">Book Now</a>
+    `;
+    container.appendChild(card);
+  });
+</script>
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '061dcd05a548b3654962ab278aa89ff923d78f5b';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+</body>
+</html>

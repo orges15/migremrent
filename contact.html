@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Yacht Charter to book your dream yacht experience. Available in Albania and Montenegro.">
+  <meta name="keywords" content="contact, yacht charter, booking, Albania, Montenegro">
+  <meta name="author" content="Your Company Name">
+  <title>Contact | Yacht Charter</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("YOUR_PUBLIC_KEY"); // Zëvendëso me public key nga EmailJS
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      <a href="index.html"><img src="501276017_17970880391858068_4089696091384218595_n.jpg" alt="Logo" /></a>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="fleet.html">Fleet</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a class="active" href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contact Page Content -->
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <form id="contact-form">
+        <input type="text" name="user_name" placeholder="Your Name" required />
+        <input type="email" name="user_email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+        <p id="contact-status"></p>
+      </form>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto:info@yachtcharter.com">migrem.travel@gmail.com</a></p>
+        <p><strong>Phone:</strong> +377 45 919 667</p>
+        <p><strong>Location:</strong> Albania & Montenegro</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MigremRental. All rights reserved.</p>
+  </footer>
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '061dcd05a548b3654962ab278aa89ff923d78f5b';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+  <script src="script.js"></script>
+</body>
+</html>
+

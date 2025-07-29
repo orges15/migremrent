@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Destinations</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+    background: #f0f8ff;
+    color: #003366;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  nav {
+    background-color: #004080;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav .logo {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+  }
+  nav ul li a {
+    color: white;
+    font-weight: 600;
+  }
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: white;
+    margin: 4px 0;
+    border-radius: 2px;
+  }
+  @media (max-width: 600px) {
+    nav ul {
+      position: absolute;
+      top: 56px;
+      left: 0;
+      right: 0;
+      background: #004080;
+      flex-direction: column;
+      display: none;
+    }
+    nav ul.show {
+      display: flex;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+  }
+  .container {
+    max-width: 1000px;
+    margin: 80px auto 60px;
+    padding: 0 15px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+    gap: 20px;
+  }
+  .card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .card-info {
+    padding: 15px;
+  }
+  .card-info h3 {
+    margin: 0 0 10px;
+  }
+  .card-info p {
+    margin: 5px 0;
+    font-weight: 600;
+  }
+  footer {
+    background: #004080;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">MigremRental</div>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span><span></span><span></span>
+  </div>
+  <ul id="navMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fleet.html">Fleet</a></li>
+    <li><a href="destinations.html">Destinations</a></li>
+    <li><a href="booking.html">Booking</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1>Popular Destinations</h1>
+  <div class="grid-container" id="destinationsContainer"></div>
+</div>
+
+<footer>
+  &copy; 2025 MigremRental. All rights reserved.
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+  const destinations = [
+    { name: "Saranda", image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80", description: "Beautiful Albanian Riviera beach town." },
+    { name: "Budva", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80", description: "Historic city with stunning beaches in Montenegro." },
+    { name: "Kotor", image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80", description: "Medieval town surrounded by mountains and sea." }
+  ];
+
+  const container = document.getElementById('destinationsContainer');
+
+  destinations.forEach(dest => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="${dest.image}" alt="${dest.name}" />
+      <div class="card-info">
+        <h3>${dest.name}</h3>
+        <p>${dest.description}</p>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+</script>
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '061dcd05a548b3654962ab278aa89ff923d78f5b';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+</body>
+</html>
